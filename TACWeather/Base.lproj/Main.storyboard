@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="TACWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kW1-aZ-NJa">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kW1-aZ-NJa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9YR-e5-zxj"/>
+                            <constraint firstItem="kW1-aZ-NJa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DkP-0V-v34"/>
+                            <constraint firstItem="kW1-aZ-NJa" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Srr-jb-BF3"/>
+                            <constraint firstItem="kW1-aZ-NJa" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="V5t-Re-ky9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="kW1-aZ-NJa" id="p8L-po-T9g"/>
+                        <segue destination="ZMG-D1-WxP" kind="show" identifier="toWeatherVC" id="zlJ-6d-HxN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-153" y="24"/>
+        </scene>
+        <!--Weather View Controller-->
+        <scene sceneID="uBG-rg-4qj">
+            <objects>
+                <viewController storyboardIdentifier="WeatherViewController" id="ZMG-D1-WxP" customClass="WeatherViewController" customModule="TACWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lN6-jw-rtw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBy-E0-p5v">
+                                <rect key="frame" x="178" y="316.5" width="19" height="34"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lpf-g9-21A">
+                                <rect key="frame" x="94" y="60" width="187.5" height="29"/>
+                                <segments>
+                                    <segment title="℃"/>
+                                    <segment title="℉"/>
+                                </segments>
+                                <connections>
+                                    <action selector="didChangeTemperatureUnit:" destination="ZMG-D1-WxP" eventType="valueChanged" id="K2a-qa-kLe"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kTS-UW-37L">
+                                <rect key="frame" x="16" y="20" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="didTapBackButton" destination="ZMG-D1-WxP" eventType="touchUpInside" id="9PR-In-p9v"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lpf-g9-21A" firstAttribute="width" secondItem="lN6-jw-rtw" secondAttribute="width" multiplier="0.5" id="4yU-Jn-za6"/>
+                            <constraint firstItem="lpf-g9-21A" firstAttribute="top" secondItem="6LK-x3-tfz" secondAttribute="top" constant="40" id="Hpn-AU-DT5"/>
+                            <constraint firstItem="kTS-UW-37L" firstAttribute="top" secondItem="6LK-x3-tfz" secondAttribute="top" id="KqN-HW-hwh"/>
+                            <constraint firstItem="dBy-E0-p5v" firstAttribute="centerY" secondItem="lN6-jw-rtw" secondAttribute="centerY" id="Pbu-8U-hLC"/>
+                            <constraint firstItem="kTS-UW-37L" firstAttribute="leading" secondItem="lN6-jw-rtw" secondAttribute="leadingMargin" id="Szz-cA-hAZ"/>
+                            <constraint firstItem="dBy-E0-p5v" firstAttribute="centerX" secondItem="lN6-jw-rtw" secondAttribute="centerX" id="q1t-yB-0Bs"/>
+                            <constraint firstItem="lpf-g9-21A" firstAttribute="centerX" secondItem="lN6-jw-rtw" secondAttribute="centerX" id="tnt-Db-gIF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6LK-x3-tfz"/>
+                    </view>
+                    <connections>
+                        <outlet property="temperatureLabel" destination="dBy-E0-p5v" id="vQN-bF-pgf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gzc-Fe-UeJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="648.79999999999995" y="23.838080959520241"/>
+        </scene>
+    </scenes>
+</document>
